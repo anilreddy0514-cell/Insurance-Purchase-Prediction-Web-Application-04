@@ -1,0 +1,10 @@
+Assignment 4: Insurance Purchase Prediction Web Application
+Question: Develop an end-to-end Insurance Purchase Prediction application using a machine learning model
+and a web interface.
+Requirements
+
+- Train a Logistic Regression model and save it as model.pkl.
+- Develop the backend using FastAPI.
+- Create the frontend using HTML, CSS, and JavaScript.
+- Validate user inputs and display prediction results clearly.
+- Demonstrate the complete application running on localhost
