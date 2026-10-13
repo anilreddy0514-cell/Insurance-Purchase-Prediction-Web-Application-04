@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f4ef" />
+    <title>CoverSignal | Purchase predictor</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/app.js" defer></script>
+</head>
+
+<body>
+    <header class="topbar">
+        <a class="brand" href="/" aria-label="CoverSignal home">
+            <span class="brand-mark" aria-hidden="true">C</span>
+            <span>CoverSignal</span>
+        </a>
+        <div class="model-status"><span class="status-dot"></span> LOGISTIC REGRESSION <span
+                class="status-divider">/</span> DEMO DATA</div>
+    </header>
+
+    <main class="workspace">
+        <section class="intro" aria-labelledby="page-title">
+            <p class="eyebrow">INSURANCE · PROPENSITY MODEL</p>
+            <h1 id="page-title">A clearer read<br />on <span>purchase intent.</span></h1>
+            <p class="intro-copy">Explore how a customer profile translates into an estimated insurance purchase
+                likelihood.</p>
+            <div class="dataset-note"><span aria-hidden="true">i</span> Trained on 5,000 generated sample records.
+                Results are illustrative, not financial advice.</div>
+        </section>
+
+        <div class="content-grid">
+            <form id="prediction-form" class="profile-form">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">CUSTOMER PROFILE</p>
+                        <h2>Profile details</h2>
+                    </div>
+                    <span class="required-note">All fields required</span>
+                </div>
+
+                <div class="field-grid">
+                    <label class="field">
+                        <span>Age</span>
+                        <span class="input-wrap"><input name="age" type="number" min="18" max="100" value="38"
+                                required /><span class="unit">years</span></span>
+                    </label>
+                    <label class="field">
+                        <span>Annual income</span>
+                        <span class="input-wrap"><span class="prefix">$</span><input name="annual_income" type="number"
+                                min="1000" max="2000000" step="500" value="68000" required /></span>
+                    </label>
+                    <label class="field">
+                        <span>Annual premium</span>
+                        <span class="input-wrap"><span class="prefix">$</span><input name="annual_premium" type="number"
+                                min="100" max="50000" step="10" value="950" required /></span>
+                    </label>
+                    <label class="field">
+                        <span>Vehicle age</span>
+                        <span class="input-wrap"><input name="vehicle_age_years" type="number" min="0" max="50"
+                                step="0.5" value="6" required /><span class="unit">years</span></span>
+                    </label>
+                    <label class="field">
+                        <span>Region</span>
+                        <span class="select-wrap">
+                            <select name="region" required>
+                                <option value="Central">Central</option>
+                                <option value="Coastal">Coastal</option>
+                                <option value="Mountain">Mountain</option>
+                                <option value="Metro">Metro</option>
+                            </select>
+                        </span>
+                    </label>
+                </div>
+
+                <fieldset class="toggle-group">
+                    <legend>Insurance history</legend>
+                    <label class="toggle-row"><span>Previously insured</span><input name="previously_insured"
+                            type="checkbox" /><span class="toggle-track" aria-hidden="true"></span></label>
+                    <label class="toggle-row"><span>Vehicle has prior damage</span><input name="vehicle_damage"
+                            type="checkbox" /><span class="toggle-track" aria-hidden="true"></span></label>
+                </fieldset>
+
+                <div class="form-footer">
+                    <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+                    <button id="predict-button" type="submit"><span>Estimate likelihood</span><span class="button-arrow"
+                            aria-hidden="true">&#8599;</span></button>
+                </div>
+            </form>
+
+            <aside class="result-panel" aria-labelledby="result-heading" aria-live="polite">
+                <div class="result-topline"><span class="result-kicker">MODEL OUTPUT</span><span class="result-index">01
+                        / 01</span></div>
+                <h2 id="result-heading">Purchase<br />likelihood</h2>
+                <div class="probability" id="probability">--<span>%</span></div>
+                <div class="meter" role="progressbar" aria-label="Purchase likelihood" aria-valuemin="0"
+                    aria-valuemax="100" aria-valuenow="0"><span id="meter-fill"></span></div>
+                <p class="result-label" id="result-label">Awaiting profile</p>
+                <div class="result-rule"></div>
+                <p class="result-footnote">Estimated probability from the trained Logistic Regression model. A 50%
+                    threshold determines the classification.</p>
+                <div class="result-stamp"><span class="stamp-mark" aria-hidden="true">CS</span><span>MODEL<br />LR ·
+                        V1.0</span></div>
+            </aside>
+        </div>
+        <footer class="page-footer"><span>COVERSIGNAL / MODEL PLAYGROUND</span><span>LOCAL PREDICTION INTERFACE</span>
+        </footer>
+    </main>
+</body>
+
+</html>
